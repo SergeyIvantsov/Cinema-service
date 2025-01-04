@@ -19,12 +19,12 @@ public class Film implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Integer id;
 
     @Column
     private String title;
 
-    @Column
+    /*@Column
     private String description;
 
     @Column
@@ -37,7 +37,7 @@ public class Film implements Serializable {
     private String genre;
 
     @Column
-    private String director;
+    private String director;*/
 
 //    @ManyToMany
 //    private List<String> actors;
