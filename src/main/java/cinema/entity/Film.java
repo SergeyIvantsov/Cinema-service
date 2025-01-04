@@ -24,20 +24,20 @@ public class Film implements Serializable {
     @Column
     private String title;
 
-    /*@Column
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column
+    @Column(name = "release_year")
     private Integer year;
 
-    @Column
-    private Integer length;
-
+//    @Column
+//    private Integer length;
+//
     @Column
     private String genre;
 
     @Column
-    private String director;*/
+    private String director;
 
 //    @ManyToMany
 //    private List<String> actors;

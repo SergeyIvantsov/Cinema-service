@@ -30,21 +30,21 @@
     <td>
       Film title
     </td>
-<%--    <td>--%>
-<%--      Film discription--%>
-<%--    </td>--%>
-<%--    <td>--%>
-<%--      Film year--%>
-<%--    </td>--%>
+    <td>
+      Film description
+    </td>
+    <td>
+      Film year
+    </td>
 <%--    <td>--%>
 <%--      Film length--%>
 <%--    </td>--%>
-<%--    <td>--%>
-<%--      Film genre--%>
-<%--    </td>--%>
-<%--    <td>--%>
-<%--      Film director--%>
-<%--    </td>--%>
+    <td>
+      Film genre
+    </td>
+    <td>
+      Film director
+    </td>
 <%--    <td colspan="2">--%>
 <%--      Action--%>
 <%--    </td>--%>
@@ -59,21 +59,21 @@
     <td>
       <%= film.getTitle() %>
     </td>
-<%--    <td>--%>
-<%--      <%= film.getDescription() %>--%>
-<%--    </td>--%>
-<%--    <td>--%>
-<%--      <%= film.getYear() %>--%>
-<%--    </td>--%>
+    <td>
+      <%= film.getDescription() %>
+    </td>
+    <td>
+      <%= film.getYear() %>
+    </td>
 <%--    <td>--%>
 <%--      <%= film.getLength() %>--%>
 <%--    </td>--%>
-<%--    <td>--%>
-<%--      <%= film.getGenre() %>--%>
-<%--    </td>--%>
-<%--    <td>--%>
-<%--      <%= film.getDirector() %>--%>
-<%--    </td>--%>
+    <td>
+      <%= film.getGenre() %>
+    </td>
+    <td>
+      <%= film.getDirector() %>
+    </td>
 <%--    <td>--%>
 <%--      <form name="delete"--%>
 <%--            method="post"--%>

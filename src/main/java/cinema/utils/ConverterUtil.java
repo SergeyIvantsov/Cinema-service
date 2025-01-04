@@ -10,11 +10,11 @@ public class ConverterUtil {
         return FilmDto.builder()
                 .id(film.getId())
                 .title(film.getTitle())
-               /* .description(film.getDescription())
+                .description(film.getDescription())
                 .year(film.getYear())
-                .length(film.getLength())
+//                .length(film.getLength())
                 .genre(film.getGenre())
-                .director(film.getDirector())*/
+                .director(film.getDirector())
                 .build();
     }
 
@@ -23,11 +23,11 @@ public class ConverterUtil {
         return Film.builder()
                 .id(dto.getId())
                 .title(dto.getTitle())
-                /*.description(dto.getDescription())
+                .description(dto.getDescription())
                 .year(dto.getYear())
-                .length(dto.getLength())
+//                .length(dto.getLength())
                 .genre(dto.getGenre())
-                .director(dto.getDirector())*/
+                .director(dto.getDirector())
                 .build();
     }
 }

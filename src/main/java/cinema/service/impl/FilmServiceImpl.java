@@ -7,7 +7,7 @@ import cinema.entity.Film;
 import cinema.service.FilmService;
 import cinema.utils.ConverterUtil;
 
-import java.sql.Timestamp;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

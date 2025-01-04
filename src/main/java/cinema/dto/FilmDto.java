@@ -20,14 +20,16 @@ public class FilmDto {
 
     private String title;
 
-    /*private String description;
+    private String description;
 
     private Integer year;
 
-    private Integer length;
-
+//    private Integer length;
+//
     private String genre;
 
-    private String director;*/
+    private String director;
+
+//    private List<String> actors;
 
 }
