@@ -24,8 +24,6 @@ public class FilmDto {
 
     private Integer year;
 
-//    private Integer length;
-//
     private String genre;
 
     private String director;

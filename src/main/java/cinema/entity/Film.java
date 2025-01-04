@@ -30,9 +30,6 @@ public class Film implements Serializable {
     @Column(name = "release_year")
     private Integer year;
 
-//    @Column
-//    private Integer length;
-//
     @Column
     private String genre;
 

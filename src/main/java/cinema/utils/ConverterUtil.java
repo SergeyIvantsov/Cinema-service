@@ -12,7 +12,6 @@ public class ConverterUtil {
                 .title(film.getTitle())
                 .description(film.getDescription())
                 .year(film.getYear())
-//                .length(film.getLength())
                 .genre(film.getGenre())
                 .director(film.getDirector())
                 .build();
@@ -25,7 +24,6 @@ public class ConverterUtil {
                 .title(dto.getTitle())
                 .description(dto.getDescription())
                 .year(dto.getYear())
-//                .length(dto.getLength())
                 .genre(dto.getGenre())
                 .director(dto.getDirector())
                 .build();
