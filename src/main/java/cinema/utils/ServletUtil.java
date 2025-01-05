@@ -10,7 +10,6 @@ public class ServletUtil {
 
     public static FilmDto mapFilm(HttpServletRequest req) {
         return FilmDto.builder()
-//                .id(0)
                 .title(getStringParam(req, "title"))
                 .description(getStringParam(req, "description"))
                 .year(getIntegerParam(req, "year"))
