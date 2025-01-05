@@ -8,7 +8,7 @@
 
     <changeSet id="1" author="sergey">
         <createTable tableName="films">
-            <column name="id" type="INT">
+            <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="title" type="VARCHAR(255)">

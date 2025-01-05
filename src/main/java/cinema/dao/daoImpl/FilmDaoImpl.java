@@ -40,12 +40,12 @@ public class FilmDaoImpl implements FilmDao {
     @Override
     public Film update(Integer id, Film film) {
         return ExecutorUtil.executeHibernate(this.entityManager, em -> {
-            Film updatedCar = this.entityManager.find(Film.class, id);
-            if (updatedCar != null) {
-                updatedCar = em.merge(film);
+            Film updatedFilm = this.entityManager.find(Film.class, id);
+            if (updatedFilm != null) {
+                updatedFilm = em.merge(film);
             }
 
-            return updatedCar;
+            return updatedFilm;
         });
     }
 
@@ -53,9 +53,9 @@ public class FilmDaoImpl implements FilmDao {
     public boolean delete(Integer id) {
 
         return Boolean.TRUE.equals(ExecutorUtil.executeHibernate(this.entityManager, em -> {
-            Film car = em.find(Film.class, id);
-            if (car != null) {
-                em.remove(car);
+            Film film = em.find(Film.class, id);
+            if (film != null) {
+                em.remove(film);
                 return true;
             } else {
                 return false;

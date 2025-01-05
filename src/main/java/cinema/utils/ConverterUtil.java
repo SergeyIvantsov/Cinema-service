@@ -6,7 +6,7 @@ import cinema.entity.Film;
 
 public class ConverterUtil {
     
-    public static FilmDto convertCar(Film film) {
+    public static FilmDto convertFilm(Film film) {
         return FilmDto.builder()
                 .id(film.getId())
                 .title(film.getTitle())
@@ -18,7 +18,7 @@ public class ConverterUtil {
     }
 
    
-    public static Film convertCar(FilmDto dto) {
+    public static Film convertFilm(FilmDto dto) {
         return Film.builder()
                 .id(dto.getId())
                 .title(dto.getTitle())

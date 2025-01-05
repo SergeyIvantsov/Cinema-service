@@ -16,33 +16,33 @@ public class FilmServiceImpl implements FilmService {
     private final FilmDao filmDao = new FilmDaoImpl();
 
     @Override
-    public FilmDto save(FilmDto carDTO) {
-        Film film = ConverterUtil.convertCar(carDTO);
+    public FilmDto save(FilmDto filmDto) {
+        Film film = ConverterUtil.convertFilm(filmDto);
 
-        carDTO.setId(filmDao.save(film).getId());
+        filmDto.setId(filmDao.save(film).getId());
 
-        return carDTO;
+        return filmDto;
     }
 
     @Override
     public FilmDto get(Integer id) {
-        return ConverterUtil.convertCar(filmDao.get(id));
+        return ConverterUtil.convertFilm(filmDao.get(id));
     }
 
     @Override
     public List<FilmDto> getAll() {
         return filmDao.getAll().stream()
-                .map(ConverterUtil::convertCar)
+                .map(ConverterUtil::convertFilm)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public FilmDto update(Integer id, FilmDto carDTO) {
-        Film film = ConverterUtil.convertCar(carDTO);
+    public FilmDto update(Integer id, FilmDto filmDto) {
+        Film film = ConverterUtil.convertFilm(filmDto);
         film.setId(id);
-        carDTO.setId(filmDao.update(id, film).getId());
+        filmDto.setId(filmDao.update(id, film).getId());
 
-        return carDTO;
+        return filmDto;
     }
 
     @Override

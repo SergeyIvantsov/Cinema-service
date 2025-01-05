@@ -15,7 +15,7 @@ public interface FilmService {
     List<FilmDto> getAll();
 
 
-    FilmDto update(Integer id, FilmDto car);
+    FilmDto update(Integer id, FilmDto film);
 
 
     boolean delete(Integer id);

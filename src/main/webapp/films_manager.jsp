@@ -21,7 +21,7 @@
 
 
 <body>
-<%--<a href="<%= ServletConstants.CARS_SAVE_SERVLET %>"><h1>SAVE CAR PAGE</h1></a><br/>--%>
+<a href="save"><h3>ADD FILM</h3></a><br/>
 <br/>
 <h1>All Films:</h1>
 <table>
