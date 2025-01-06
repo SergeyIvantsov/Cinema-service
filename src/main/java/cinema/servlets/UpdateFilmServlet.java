@@ -21,10 +21,18 @@ public class UpdateFilmServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id = ServletUtil.getIntegerParam(request, "id");
+        if (id == null) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Film Id is null");
+            return;
+        }
 
         FilmDto filmDto = filmService.get(id);
-        request.setAttribute("film", filmDto);
 
+        request.setAttribute("film", filmDto);
+        if (filmDto == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Film not found");
+            return;
+        }
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/update.jsp");
         requestDispatcher.forward(request, response);
 
@@ -34,6 +42,7 @@ public class UpdateFilmServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         filmService.update(ServletUtil.getIntegerParam(request, "id"),
                 ServletUtil.mapFilm(request));
+
         response.sendRedirect("films_manager");
     }
 

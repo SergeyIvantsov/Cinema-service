@@ -1,5 +1,4 @@
 package cinema.dto;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,20 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class FilmDto {
-
+public class UserDto {
     private Integer id;
-
-    private String title;
-
-    private String description;
-
-    private Integer year;
-
-    private String genre;
-
-    private String director;
-
-//    private List<String> actors;
-
+    private String username;
 }
