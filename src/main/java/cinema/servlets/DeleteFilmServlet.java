@@ -1,6 +1,5 @@
 package cinema.servlets;
 
-import cinema.dto.FilmDto;
 import cinema.service.FilmService;
 import cinema.service.impl.FilmServiceImpl;
 import cinema.utils.HibernateUtil;

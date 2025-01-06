@@ -26,12 +26,12 @@
 <h1>All Films:</h1>
 <table>
   <tr>
-    <td>Film ID</td>
-    <td>Film title</td>
-    <td>Film description</td>
-    <td>Film year</td>
-    <td>Film genre</td>
-    <td>Film director</td>
+    <td><B>Film ID</B></td>
+    <td><B>Film title</B></td>
+    <td><B>Film description</B></td>
+    <td><B>Film year</B></td>
+    <td><B>Film genre</B></td>
+    <td><B>Film director</B></td>
 
   </tr>
   <% List<FilmDto> films = (List<FilmDto>) request.getAttribute("films");
