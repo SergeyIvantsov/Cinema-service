@@ -1,8 +1,10 @@
 package cinema.utils;
 
 
+import cinema.dto.AccountDto;
 import cinema.dto.FilmDto;
 import cinema.dto.UserDto;
+import cinema.entity.Account;
 import cinema.entity.Film;
 import cinema.entity.User;
 
@@ -44,6 +46,23 @@ public class ConverterUtil {
         return User.builder()
                 .id(userDto.getId())
                 .username(userDto.getUsername())
+                .build();
+    }
+
+
+    public static AccountDto convertAccount(Account account) {
+        return AccountDto.builder()
+                .id(account.getId())
+                .userId(account.getUserId())
+                .desiredFilms(account.getDesiredFilms())
+                .build();
+    }
+
+    public static Account convertAccount(AccountDto accountDto) {
+        return Account.builder()
+                .id(accountDto.getId())
+                .userId(accountDto.getUserId())
+                .desiredFilms(accountDto.getDesiredFilms())
                 .build();
     }
 

@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -35,6 +39,9 @@ public class Film implements Serializable {
 
     @Column
     private String director;
+
+    @ManyToMany (mappedBy = "desiredFilms")
+    private List<Account> accounts =new ArrayList<>();
 
 //    @ManyToMany
 //    private List<String> actors;

@@ -17,19 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "getUserServlet", value = "/account")
+//@WebServlet(name = "getUserServlet", value = "/account1")
 public class GetUserServlet extends HttpServlet {
     private final UserService userService = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final UserDto userDto = this.userService.get(1);//toDo убрать хардкод айдишника
-
-        req.setAttribute("user", userDto);
-
-        RequestDispatcher requestDispatcher = getServletContext()
-                .getRequestDispatcher("/account.jsp");
-        requestDispatcher.forward(req, resp);
+//        final UserDto userDto = this.userService.get(1);//toDo убрать хардкод айдишника
+//
+//        req.setAttribute("user", userDto);
+//
+//        RequestDispatcher requestDispatcher = getServletContext()
+//                .getRequestDispatcher("/account1.jsp");
+//        requestDispatcher.forward(req, resp);
     }
 
     @Override

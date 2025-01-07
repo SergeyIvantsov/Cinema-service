@@ -18,6 +18,6 @@
 <br>
 <td>UserName: <%= user.getUsername()%>
 </td>
-
+<%--//Добав табл.--%>
 </body>
 </html>
