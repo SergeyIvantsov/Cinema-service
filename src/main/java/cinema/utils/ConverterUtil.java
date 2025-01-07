@@ -8,8 +8,11 @@ import cinema.entity.Account;
 import cinema.entity.Film;
 import cinema.entity.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConverterUtil {
-    
+
     public static FilmDto convertFilm(Film film) {
         return FilmDto.builder()
                 .id(film.getId())
@@ -21,7 +24,7 @@ public class ConverterUtil {
                 .build();
     }
 
-   
+
     public static Film convertFilm(FilmDto dto) {
         return Film.builder()
                 .id(dto.getId())
@@ -32,7 +35,6 @@ public class ConverterUtil {
                 .director(dto.getDirector())
                 .build();
     }
-
 
 
     public static UserDto convertUser(User user) {
@@ -51,18 +53,29 @@ public class ConverterUtil {
 
 
     public static AccountDto convertAccount(Account account) {
+        List<Film> desiredFilms = account.getDesiredFilms();
+        List<FilmDto> desiredFilmsDto = new ArrayList<>();
+        for (Film film : desiredFilms) {
+            desiredFilmsDto.add(convertFilm(film));
+        }
         return AccountDto.builder()
                 .id(account.getId())
                 .userId(account.getUserId())
-                .desiredFilms(account.getDesiredFilms())
+                .desiredFilms(desiredFilmsDto)
                 .build();
     }
 
     public static Account convertAccount(AccountDto accountDto) {
+       List<FilmDto> filmDtoList = accountDto.getDesiredFilms();
+       List<Film> films = new ArrayList<>();
+       for (FilmDto filmDto : filmDtoList) {
+           films.add(convertFilm(filmDto));
+
+       }
         return Account.builder()
                 .id(accountDto.getId())
                 .userId(accountDto.getUserId())
-                .desiredFilms(accountDto.getDesiredFilms())
+                .desiredFilms(films)
                 .build();
     }
 

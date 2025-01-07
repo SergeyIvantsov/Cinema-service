@@ -16,5 +16,5 @@ public class AccountDto {
     private Integer id;
     private Integer userId;
 
-    private List<Film> desiredFilms;
+    private List<FilmDto> desiredFilms;
 }
