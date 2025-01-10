@@ -18,7 +18,6 @@ public class AccountServiceImpl implements AccountService {
         Account account = ConverterUtil.convertAccount(accountDto);
 
         accountDto.setId(accountDao.save(account).getId());
-
         return accountDto;
     }
 

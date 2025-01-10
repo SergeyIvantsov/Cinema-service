@@ -2,17 +2,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="cinema.dto.UserDto" %>
 <%@ page import="cinema.dto.FilmDto" %>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.Set" %>
 <html>
 <head>
     <title>Account</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+    </style>
 </head>
 
 <body>
 <br/>
 <h1>Account:</h1>
-
-
 <% UserDto user = (UserDto) request.getAttribute("user");
 %>
 <td>User Id: <%= user.getId() %>
@@ -31,7 +40,7 @@
         <td><B>Film director</B></td>
 
     </tr>
-    <% List<FilmDto> films = (List<FilmDto>) request.getAttribute("films");
+    <% Set<FilmDto> films = (Set<FilmDto>) request.getAttribute("films");
         for (FilmDto film : films) {
     %>
     <tr>

@@ -4,7 +4,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -28,11 +30,13 @@ public class Account implements Serializable{
 //    private List<String> watchedFilms;
 //
 
-    @ManyToMany(cascade= CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinTable(name = "films_for_accounts",
-            joinColumns = {@JoinColumn(name="account_id")},
-            inverseJoinColumns = {@JoinColumn(name = "film_id")})
-    private List<Film> desiredFilms = new ArrayList<Film>();
+            joinColumns = @JoinColumn(name="account_id"),
+            inverseJoinColumns = @JoinColumn(name = "film_id"))
+    @Builder.Default
+    private Set<Film> desiredFilms = new HashSet<Film>();
 
 
 }

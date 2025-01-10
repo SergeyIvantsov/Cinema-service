@@ -1,4 +1,5 @@
 <%@include file="hat.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <br>
 <h2>Menu</h2>

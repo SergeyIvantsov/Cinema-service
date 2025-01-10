@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 @WebServlet(name = "getAccountServlet", value = "/account")
 public class GetAccountServlet extends HttpServlet {
@@ -31,7 +31,7 @@ public class GetAccountServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final AccountDto accountDto = this.accountService.get(1);//toDo убрать хардкод айдишника
         Integer userId = accountDto.getUserId();
-        List<FilmDto> desiredFilms = accountDto.getDesiredFilms();
+        Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
         final UserDto userDto = this.userService.get(userId);
 
         req.setAttribute("account", accountDto);
@@ -47,6 +47,7 @@ public class GetAccountServlet extends HttpServlet {
     @Override
     public void destroy() {
         this.accountService.closeDao();
+        this.userService.closeDao();
         HibernateUtil.close();
         super.destroy();
     }

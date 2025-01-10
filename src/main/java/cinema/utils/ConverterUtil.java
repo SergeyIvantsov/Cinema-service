@@ -9,7 +9,9 @@ import cinema.entity.Film;
 import cinema.entity.User;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ConverterUtil {
 
@@ -53,8 +55,8 @@ public class ConverterUtil {
 
 
     public static AccountDto convertAccount(Account account) {
-        List<Film> desiredFilms = account.getDesiredFilms();
-        List<FilmDto> desiredFilmsDto = new ArrayList<>();
+        Set<Film> desiredFilms = account.getDesiredFilms();
+        Set<FilmDto> desiredFilmsDto = new HashSet<>();
         for (Film film : desiredFilms) {
             desiredFilmsDto.add(convertFilm(film));
         }
@@ -66,8 +68,8 @@ public class ConverterUtil {
     }
 
     public static Account convertAccount(AccountDto accountDto) {
-       List<FilmDto> filmDtoList = accountDto.getDesiredFilms();
-       List<Film> films = new ArrayList<>();
+       Set<FilmDto> filmDtoList = accountDto.getDesiredFilms();
+        Set<Film> films = new HashSet<>();
        for (FilmDto filmDto : filmDtoList) {
            films.add(convertFilm(filmDto));
 

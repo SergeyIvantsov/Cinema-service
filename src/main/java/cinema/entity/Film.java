@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -40,8 +38,11 @@ public class Film implements Serializable {
     @Column
     private String director;
 
-    @ManyToMany (mappedBy = "desiredFilms")
-    private List<Account> accounts =new ArrayList<>();
+    @ManyToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.REFRESH},
+            mappedBy = "desiredFilms")
+    @Builder.Default
+   private Set<Account> accounts =new HashSet<Account>();
 
 //    @ManyToMany
 //    private List<String> actors;

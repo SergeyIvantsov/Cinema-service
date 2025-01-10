@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="cinema.dto.FilmDto" %>
 <%@ page import="java.util.List" %>
-<%--<%@ page import="cinema.utils.ServletConstants" %>--%>
 <html>
 <head>
   <title>Films list</title>
@@ -21,7 +20,7 @@
 
 
 <body>
-<a href="save"><h3>ADD FILM</h3></a><br/>
+<a href="save"><h3>ADD FILM TO COMMON LIST</h3></a><br/>
 <br/>
 <h1>All Films:</h1>
 <table>
@@ -55,7 +54,11 @@
         <button name="id" value="<%= film.getId() %>">Update</button>
       </form>
     </td>
-
+    <td class="action-buttons">
+      <form name="add" method="post" action="add">
+        <button name="id" value="<%= film.getId() %>">Add Film to desired</button>
+      </form>
+    </td>
   </tr>
   <%
     }

@@ -1,6 +1,5 @@
 package cinema.dao.daoImpl;
 
-import cinema.dao.DAO;
 import cinema.dao.UserDao;
 import cinema.entity.User;
 import cinema.utils.ExecutorUtil;
