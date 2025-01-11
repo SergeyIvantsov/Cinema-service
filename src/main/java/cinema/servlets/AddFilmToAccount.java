@@ -26,8 +26,9 @@ public class AddFilmToAccount extends HttpServlet {
         FilmDto filmDto = filmService.get(idFilm);
         AccountDto accountDto = accountService.get(1);//toDo это хардкод на пока, потом убрать его
         accountDto.getDesiredFilms().add(filmDto);
-        accountService.save(accountDto);
-        response.sendRedirect("films_manager");
+        accountService.update(accountDto.getId(), accountDto);
+
+        response.sendRedirect("account");
    }
 
     @Override
