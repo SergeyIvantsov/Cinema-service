@@ -3,15 +3,20 @@ package cinema.service.impl;
 import cinema.dao.AccountDao;
 import cinema.dao.daoImpl.AccountDaoImpl;
 import cinema.dto.AccountDto;
+import cinema.dto.FilmDto;
 import cinema.entity.Account;
 import cinema.service.AccountService;
+import cinema.service.FilmService;
 import cinema.utils.ConverterUtil;
+import cinema.utils.ServletUtil;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class AccountServiceImpl implements AccountService {
     private final AccountDao accountDao = new AccountDaoImpl();
+    private FilmService filmService = new FilmServiceImpl();
 
     @Override
     public AccountDto save(AccountDto accountDto) {
@@ -45,6 +50,15 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public boolean delete(Integer id) {
         return accountDao.delete(id);
+    }
+@Override
+    public void deleteFilmFromAccount (Integer idFilm) {
+        AccountDto accountDto = get(1);//toDo хардкод
+        Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
+        FilmDto filmDto = filmService.get(idFilm);
+        desiredFilms.remove(filmDto);
+        update(1, accountDto);
+
     }
 
     @Override

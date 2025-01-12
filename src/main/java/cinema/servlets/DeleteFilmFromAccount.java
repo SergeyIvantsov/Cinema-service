@@ -15,32 +15,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Set;
 
 @WebServlet(name = "deleteFilmFromAccount", value = "/delete_film_from_account")
 public class DeleteFilmFromAccount extends HttpServlet {
     private AccountService accountService = new AccountServiceImpl();
-    private FilmService filmService = new FilmServiceImpl();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AccountDto accountDto = accountService.get(1);//toDo хардкод
-        Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
-        FilmDto filmDto = filmService.get(ServletUtil.getIntegerParam(request, "id"));
-        desiredFilms.remove(filmDto);
-        accountService.update(1, accountDto);
+        Integer idFilm = ServletUtil.getIntegerParam(request, "id");
+        accountService.deleteFilmFromAccount(idFilm);
         response.sendRedirect("account");
     }
 
 
-
     @Override
     public void destroy() {
-        this.filmService.closeDao();
-        accountService.closeDao();
+        this.accountService.closeDao();
         HibernateUtil.close();
         super.destroy();
     }
-
-
 
 
 }
