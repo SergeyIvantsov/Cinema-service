@@ -52,7 +52,7 @@
         <td><%= film.getDirector() %></td>
 
         <td class="action-buttons">
-            <form name="delete" method="post" action="delete">
+            <form name="delete" method="post" action="delete_film_from_account">
                 <button name="id" value="<%= film.getId() %>">Delete</button>
             </form>
         </td>
