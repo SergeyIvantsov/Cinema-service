@@ -24,6 +24,7 @@
                                  referencedTableName="accounts"
                                  referencedColumnNames="id"/>
     </changeSet>
+
     <changeSet id="3" author="sergey">
         <addForeignKeyConstraint baseTableName="films_for_accounts" baseColumnNames="film_id"
                                  constraintName="films_for_accounts_film_id"

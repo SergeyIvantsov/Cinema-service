@@ -11,6 +11,7 @@ import cinema.service.impl.AccountServiceImpl;
 import cinema.service.impl.FilmServiceImpl;
 import cinema.service.impl.UserServiceImpl;
 import cinema.utils.HibernateUtil;
+import cinema.utils.ServletUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,10 +30,11 @@ public class GetAccountServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final AccountDto accountDto = this.accountService.get(1);//toDo убрать хардкод айдишника
+        Integer accountId = ServletUtil.getIntegerParam(req,"id");
+        AccountDto accountDto = this.accountService.get(1);//toDo убрать хардкод айдишника
         Integer userId = accountDto.getUserDto().getId();
         Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
-        final UserDto userDto = this.userService.get(userId);
+        UserDto userDto = this.userService.get(userId);
 
         req.setAttribute("account", accountDto);
         req.setAttribute("user", userDto);

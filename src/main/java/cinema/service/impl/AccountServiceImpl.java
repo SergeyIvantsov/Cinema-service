@@ -8,8 +8,6 @@ import cinema.entity.Account;
 import cinema.service.AccountService;
 import cinema.service.FilmService;
 import cinema.utils.ConverterUtil;
-import cinema.utils.ServletUtil;
-
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

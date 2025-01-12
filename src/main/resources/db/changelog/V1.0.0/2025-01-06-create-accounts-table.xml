@@ -14,6 +14,8 @@
             <column name="userId" type="INT">
                 <constraints nullable="false"/>
             </column>
+
+
 <!--            <column name="watched_films" type="TEXT">-->
 <!--                <constraints nullable="true"/>-->
 <!--            </column>-->
@@ -21,5 +23,16 @@
 
         </createTable>
     </changeSet>
+
+
+<changeSet id="2" author="sergey">
+<addForeignKeyConstraint
+        baseTableName="accounts"
+        baseColumnNames="userId"
+        referencedTableName="users"
+        referencedColumnNames="id"
+        constraintName="fk_account_user"/>
+</changeSet>
+
 
 </databaseChangeLog>

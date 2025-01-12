@@ -19,9 +19,7 @@
     <br/>
     <label>
         Fill film description:
-        <input name="description" type="text"
-               value="<%=filmDto.getDescription()%>"
-               required>
+        <input name="description" type="text" value="<%=filmDto.getDescription()%>" required>
     </label>
     <br/>
     <label>
