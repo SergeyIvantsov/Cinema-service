@@ -51,11 +51,11 @@
         <td><%= film.getGenre() %></td>
         <td><%= film.getDirector() %></td>
 
-<%--        <td class="action-buttons">--%>
-<%--            <form name="delete" method="post" action="delete">--%>
-<%--                <button name="id" value="<%= film.getId() %>">Delete</button>--%>
-<%--            </form>--%>
-<%--        </td>--%>
+        <td class="action-buttons">
+            <form name="delete" method="post" action="delete">
+                <button name="id" value="<%= film.getId() %>">Delete</button>
+            </form>
+        </td>
 
     </tr>
     <%

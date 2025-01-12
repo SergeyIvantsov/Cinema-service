@@ -35,7 +35,6 @@ public class Account implements Serializable{
     @JoinTable(name = "films_for_accounts",
             joinColumns = @JoinColumn(name="account_id"),
             inverseJoinColumns = @JoinColumn(name = "film_id"))
-    @Builder.Default
     private Set<Film> desiredFilms = new HashSet<Film>();
 
 

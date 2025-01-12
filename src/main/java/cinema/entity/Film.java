@@ -41,7 +41,6 @@ public class Film implements Serializable {
     @ManyToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.REFRESH},
             mappedBy = "desiredFilms")
-    @Builder.Default
    private Set<Account> accounts =new HashSet<Account>();
 
 //    @ManyToMany
