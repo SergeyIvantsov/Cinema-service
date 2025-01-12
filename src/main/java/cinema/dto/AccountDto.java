@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 public class AccountDto {
     private Integer id;
-    private Integer userId;
+    private UserDto userDto;
 
     private Set<FilmDto> desiredFilms=new HashSet<>();
 }

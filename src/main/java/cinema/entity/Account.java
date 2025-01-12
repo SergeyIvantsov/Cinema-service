@@ -12,8 +12,8 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "desiredFilms")
-@EqualsAndHashCode(exclude = "desiredFilms")
+@ToString(exclude = {"desiredFilms", "user"})
+@EqualsAndHashCode(exclude = {"desiredFilms", "user"})
 @Builder
 @Data
 @Table(name = "accounts")
@@ -23,8 +23,10 @@ public class Account implements Serializable{
     @Column
     private Integer id;
 
-    @Column
-    private Integer userId;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @PrimaryKeyJoinColumn
+    private User user;
 
 //    @Column
 //    private List<String> watchedFilms;
@@ -35,7 +37,8 @@ public class Account implements Serializable{
     @JoinTable(name = "films_for_accounts",
             joinColumns = @JoinColumn(name="account_id"),
             inverseJoinColumns = @JoinColumn(name = "film_id"))
-    private Set<Film> desiredFilms = new HashSet<Film>();
+    private Set<Film> desiredFilms = new HashSet<>();
+
 
 
 }

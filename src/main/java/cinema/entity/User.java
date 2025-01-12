@@ -23,6 +23,10 @@ public class User implements Serializable {
     private Integer id;
 
     @Column
-    private String username;
+    private String userName;
+
+    @OneToOne(mappedBy ="user", cascade= CascadeType.ALL,
+            fetch = FetchType.EAGER)
+    private Account account;
 
 }

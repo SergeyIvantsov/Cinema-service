@@ -8,9 +8,7 @@ import cinema.entity.Account;
 import cinema.entity.Film;
 import cinema.entity.User;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class ConverterUtil {
@@ -42,14 +40,14 @@ public class ConverterUtil {
     public static UserDto convertUser(User user) {
         return UserDto.builder()
                 .id(user.getId())
-                .username(user.getUsername())
+                .userName(user.getUserName())
                 .build();
     }
 
     public static User convertUser(UserDto userDto) {
         return User.builder()
                 .id(userDto.getId())
-                .username(userDto.getUsername())
+                .userName(userDto.getUserName())
                 .build();
     }
 
@@ -62,7 +60,7 @@ public class ConverterUtil {
         }
         return AccountDto.builder()
                 .id(account.getId())
-                .userId(account.getUserId())
+                .userDto(convertUser(account.getUser()))
                 .desiredFilms(desiredFilmsDto)
                 .build();
     }
@@ -76,7 +74,7 @@ public class ConverterUtil {
        }
         return Account.builder()
                 .id(accountDto.getId())
-                .userId(accountDto.getUserId())
+                .user(convertUser(accountDto.getUserDto()))
                 .desiredFilms(films)
                 .build();
     }

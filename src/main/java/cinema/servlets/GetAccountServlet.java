@@ -30,7 +30,7 @@ public class GetAccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final AccountDto accountDto = this.accountService.get(1);//toDo убрать хардкод айдишника
-        Integer userId = accountDto.getUserId();
+        Integer userId = accountDto.getUserDto().getId();
         Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
         final UserDto userDto = this.userService.get(userId);
 

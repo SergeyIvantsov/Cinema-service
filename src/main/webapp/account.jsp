@@ -27,7 +27,7 @@
 <td>User Id: <%= user.getId() %>
 </td>
 <br>
-<td>UserName: <%= user.getUsername()%>
+<td>UserName: <%= user.getUserName()%>
 </td>
 <h1>Desired Films:</h1>
 <table>
