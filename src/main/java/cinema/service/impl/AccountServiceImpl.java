@@ -21,7 +21,6 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public AccountDto save(AccountDto accountDto) {
         Account account = ConverterUtil.convertAccount(accountDto);
-
         accountDto.setId(accountDao.save(account).getId());
         return accountDto;
     }
@@ -43,7 +42,6 @@ public class AccountServiceImpl implements AccountService {
         Account account = ConverterUtil.convertAccount(accountDto);
         account.setId(id);
         accountDto.setId(accountDao.update(id, account).getId());
-
         return accountDto;
     }
 
@@ -51,8 +49,9 @@ public class AccountServiceImpl implements AccountService {
     public boolean delete(Integer id) {
         return accountDao.delete(id);
     }
-@Override
-    public void deleteFilmFromAccount (Integer idFilm) {
+
+    @Override
+    public void deleteFilmFromAccount(Integer idFilm) {
         AccountDto accountDto = get(1);//toDo хардкод
         Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
         FilmDto filmDto = filmService.get(idFilm);
@@ -65,7 +64,6 @@ public class AccountServiceImpl implements AccountService {
     public void closeDao() {
         this.accountDao.close();
     }
-    
-    
-    
+
+
 }

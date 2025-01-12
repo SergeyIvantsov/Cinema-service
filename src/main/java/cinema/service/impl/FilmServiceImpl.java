@@ -41,7 +41,6 @@ public class FilmServiceImpl implements FilmService {
         Film film = ConverterUtil.convertFilm(filmDto);
         film.setId(id);
         filmDto.setId(filmDao.update(id, film).getId());
-
         return filmDto;
     }
 

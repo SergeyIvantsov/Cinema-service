@@ -44,7 +44,6 @@ public class FilmDaoImpl implements FilmDao {
             if (updatedFilm != null) {
                 updatedFilm = em.merge(film);
             }
-
             return updatedFilm;
         });
     }

@@ -1,5 +1,4 @@
 package cinema.dto;
-import cinema.entity.Film;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

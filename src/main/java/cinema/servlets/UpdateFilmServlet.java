@@ -27,7 +27,6 @@ public class UpdateFilmServlet extends HttpServlet {
         }
 
         FilmDto filmDto = filmService.get(id);
-        request.setCharacterEncoding("UTF-8");
         request.setAttribute("film", filmDto);
         if (filmDto == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Film not found");
@@ -40,10 +39,8 @@ public class UpdateFilmServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
         filmService.update(ServletUtil.getIntegerParam(request, "id"),
                 ServletUtil.mapFilm(request));
-
         response.sendRedirect("films_manager");
     }
 
