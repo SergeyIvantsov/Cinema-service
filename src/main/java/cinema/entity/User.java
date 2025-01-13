@@ -25,7 +25,6 @@ public class User implements Serializable {
     @Column
     private String userName;
 
-
     @OneToOne(mappedBy ="user", cascade= CascadeType.ALL,
             fetch = FetchType.EAGER)
     private Account account;

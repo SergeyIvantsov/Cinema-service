@@ -59,6 +59,11 @@
         <button name="id" value="<%= film.getId() %>">Add Film to desired</button>
       </form>
     </td>
+    <td class="action-buttons">
+      <form name="add_watched" method="post" action="add_watched">
+        <button name="id" value="<%= film.getId() %>">Mark Film as watched</button>
+      </form>
+    </td>
   </tr>
   <%
     }

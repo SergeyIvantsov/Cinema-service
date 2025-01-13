@@ -57,6 +57,14 @@ public class AccountServiceImpl implements AccountService {
         update(1, accountDto);
 
     }
+    @Override
+    public void deleteWatchedFilmFromAccount(Integer idFilm) {
+        AccountDto accountDto = get(1);//toDo хардкод
+        Set<FilmDto> watchedFilms = accountDto.getWatchedFilms();
+        FilmDto filmDto = filmService.get(idFilm);
+        watchedFilms.remove(filmDto);
+        update(1, accountDto);
+    }
 
     @Override
     public void closeDao() {

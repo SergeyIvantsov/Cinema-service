@@ -19,6 +19,7 @@ public interface AccountService {
 
     void deleteFilmFromAccount (Integer idFilm);
 
+    void deleteWatchedFilmFromAccount(Integer idWatchFilm);
 
     void closeDao();
 

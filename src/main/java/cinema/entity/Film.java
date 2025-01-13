@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,6 +42,11 @@ public class Film implements Serializable {
             mappedBy = "desiredFilms")
    private Set<Account> accounts =new HashSet<Account>();
 
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST,
+            CascadeType.REFRESH},
+            mappedBy = "watchedFilms")
+    private Set<Account> accounts2 = new HashSet<>();
 //    @ManyToMany
 //    private List<String> actors;
 }

@@ -16,5 +16,6 @@ public class AccountDto {
     private Integer id;
     private UserDto userDto;
 
-    private Set<FilmDto> desiredFilms=new HashSet<>();
+    private Set<FilmDto> desiredFilms = new HashSet<>();
+    private Set<FilmDto> watchedFilms = new HashSet<>();
 }

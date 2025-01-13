@@ -34,12 +34,14 @@ public class GetAccountServlet extends HttpServlet {
         AccountDto accountDto = this.accountService.get(1);//toDo убрать хардкод айдишника
         Integer userId = accountDto.getUserDto().getId();
         Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
+        Set<FilmDto> watchedFilms = accountDto.getWatchedFilms();
         UserDto userDto = this.userService.get(userId);
 
         req.setAttribute("account", accountDto);
         req.setAttribute("user", userDto);
         //обратиться к сервису и получ. список фильмов, которые неоходимо
         req.setAttribute("films", desiredFilms);
+        req.setAttribute("watched_films", watchedFilms);
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/account.jsp");

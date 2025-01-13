@@ -58,24 +58,37 @@ public class ConverterUtil {
         for (Film film : desiredFilms) {
             desiredFilmsDto.add(convertFilm(film));
         }
+        Set<Film> watchedFilms = account.getWatchedFilms();
+        Set<FilmDto> watchedFilmsDto = new HashSet<>();
+        for (Film film : watchedFilms){
+            watchedFilmsDto.add(convertFilm(film));
+        }
         return AccountDto.builder()
                 .id(account.getId())
                 .userDto(convertUser(account.getUser()))
                 .desiredFilms(desiredFilmsDto)
+                .watchedFilms(watchedFilmsDto)
                 .build();
     }
 
     public static Account convertAccount(AccountDto accountDto) {
-       Set<FilmDto> filmDtoList = accountDto.getDesiredFilms();
+       Set<FilmDto> filmDtoSet = accountDto.getDesiredFilms();
         Set<Film> films = new HashSet<>();
-       for (FilmDto filmDto : filmDtoList) {
+       for (FilmDto filmDto : filmDtoSet) {
            films.add(convertFilm(filmDto));
 
+       }
+
+       Set<FilmDto> watchedFilmsDto = accountDto.getWatchedFilms();
+       Set<Film> watchedFilmsSet = new HashSet<>();
+       for (FilmDto filmDto : watchedFilmsDto) {
+           watchedFilmsSet.add(convertFilm(filmDto));
        }
         return Account.builder()
                 .id(accountDto.getId())
                 .user(convertUser(accountDto.getUserDto()))
                 .desiredFilms(films)
+                .watchedFilms(watchedFilmsSet)
                 .build();
     }
 

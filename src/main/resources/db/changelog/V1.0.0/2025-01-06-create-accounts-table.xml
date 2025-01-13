@@ -14,13 +14,6 @@
             <column name="userId" type="INT">
                 <constraints nullable="false"/>
             </column>
-
-
-<!--            <column name="watched_films" type="TEXT">-->
-<!--                <constraints nullable="true"/>-->
-<!--            </column>-->
-
-
         </createTable>
     </changeSet>
 

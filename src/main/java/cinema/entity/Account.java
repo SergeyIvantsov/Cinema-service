@@ -6,12 +6,11 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"desiredFilms", "user"})
-@EqualsAndHashCode(exclude = {"desiredFilms", "user"})
+@ToString(exclude = {"desiredFilms", "user", "watchedFilms"})
+@EqualsAndHashCode(exclude = {"desiredFilms", "user", "watchedFilms"})
 @Builder
 @Data
 @Table(name = "accounts")
@@ -26,10 +25,6 @@ public class Account implements Serializable{
     @PrimaryKeyJoinColumn
     private User user;
 
-//    @Column
-//    private List<String> watchedFilms;
-//
-
     @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinTable(name = "films_for_accounts",
@@ -38,5 +33,12 @@ public class Account implements Serializable{
     private Set<Film> desiredFilms = new HashSet<>();
 
 
+
+    @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinTable(name = "watched_films_for_accounts",
+            joinColumns = @JoinColumn(name="account_id"),
+            inverseJoinColumns = @JoinColumn(name = "watched_film_id"))
+    private Set<Film> watchedFilms=new HashSet<>();
 
 }
