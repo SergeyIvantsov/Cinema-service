@@ -20,6 +20,14 @@
 
 
 <body>
+
+<form action="find_film" method="get">
+  <label>Find film by title:</label>
+  <input name="find_film" type="text" placeholder="Enter film title"/>
+  <input type="submit" value="Search" />
+</form>
+
+<br/>
 <a href="save"><h3>ADD FILM TO COMMON LIST</h3></a><br/>
 <br/>
 <h1>All Films:</h1>

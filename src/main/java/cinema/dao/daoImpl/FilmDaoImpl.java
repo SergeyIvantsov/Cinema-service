@@ -36,6 +36,14 @@ public class FilmDaoImpl implements FilmDao {
         return ExecutorUtil.executeHibernate(this.entityManager,
                 em -> em.createQuery(query, Film.class).getResultList());
     }
+    @Override
+    public List<Film> findByName(String title) {
+        String query = "FROM Film f WHERE f.title LIKE :title";
+       return ExecutorUtil.executeHibernate(this.entityManager,
+               em -> em.createQuery(query, Film.class)
+               .setParameter("title", "%" + title + "%")  // Поиск по части названия
+               .getResultList());
+    }
 
     @Override
     public Film update(Integer id, Film film) {

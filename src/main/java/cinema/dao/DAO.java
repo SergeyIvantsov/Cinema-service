@@ -1,5 +1,7 @@
 package cinema.dao;
 
+import cinema.entity.Film;
+
 import java.util.List;
 
 public interface DAO <T>{
@@ -9,6 +11,8 @@ public interface DAO <T>{
     T get(Integer id);
 
     List<T> getAll();
+
+//    List<T> find (String title);
 
     T update(Integer id, T t);
 

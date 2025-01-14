@@ -1,5 +1,6 @@
 package cinema.service;
 
+import cinema.dto.AccountDto;
 import cinema.dto.FilmDto;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface FilmService {
 
     List<FilmDto> getAll();
 
+    List<FilmDto> findByName(String search);
 
     FilmDto update(Integer id, FilmDto film);
 

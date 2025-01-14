@@ -2,6 +2,7 @@ package cinema.service.impl;
 
 import cinema.dao.FilmDao;
 import cinema.dao.daoImpl.FilmDaoImpl;
+import cinema.dto.AccountDto;
 import cinema.dto.FilmDto;
 import cinema.entity.Film;
 import cinema.service.FilmService;
@@ -34,6 +35,13 @@ public class FilmServiceImpl implements FilmService {
         return filmDao.getAll().stream()
                 .map(ConverterUtil::convertFilm)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FilmDto> findByName(String search) {
+       return filmDao.findByName(search).stream()
+               .map(ConverterUtil::convertFilm)
+               .collect(Collectors.toList());
     }
 
     @Override
