@@ -41,7 +41,7 @@ public class FilmDaoImpl implements FilmDao {
         String query = "FROM Film f WHERE f.title LIKE :title";
        return ExecutorUtil.executeHibernate(this.entityManager,
                em -> em.createQuery(query, Film.class)
-               .setParameter("title", "%" + title + "%")  // Поиск по части названия
+               .setParameter("title", "%" + title + "%")
                .getResultList());
     }
 

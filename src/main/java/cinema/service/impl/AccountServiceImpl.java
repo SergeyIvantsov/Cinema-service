@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class AccountServiceImpl implements AccountService {
     private final AccountDao accountDao = new AccountDaoImpl();
-    private FilmService filmService = new FilmServiceImpl();
+    private final FilmService filmService = new FilmServiceImpl();
 
     @Override
     public AccountDto save(AccountDto accountDto) {
@@ -65,6 +65,8 @@ public class AccountServiceImpl implements AccountService {
         watchedFilms.remove(filmDto);
         update(1, accountDto);
     }
+
+
 
     @Override
     public void closeDao() {

@@ -28,7 +28,6 @@ public class SaveFilmServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         filmService.save(ServletUtil.mapFilm(req));
-
         resp.sendRedirect("films_manager");
     }
 

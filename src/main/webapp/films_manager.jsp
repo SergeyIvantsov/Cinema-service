@@ -30,6 +30,23 @@
 <br/>
 <a href="save"><h3>ADD FILM TO COMMON LIST</h3></a><br/>
 <br/>
+
+<% String MessageWatched = (String) session.getAttribute("MessageWatched"); %>
+<% if (MessageWatched != null) { %>
+<div class="alert alert-success">
+  <%= MessageWatched %>
+</div>
+<% session.removeAttribute("MessageWatched"); %>
+<% } %>
+
+<% String MessageDesired = (String) session.getAttribute("MessageDesired");%>
+<%if (MessageDesired != null) { %>
+<div class="alert alert-success">
+  <%= MessageDesired %>
+</div>
+<%session.removeAttribute("MessageDesired");%>
+<% } %>
+
 <h1>All Films:</h1>
 <table>
   <tr>

@@ -20,7 +20,6 @@ public class Account implements Serializable{
     @Column
     private Integer id;
 
-
     @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn
     private User user;
@@ -31,7 +30,6 @@ public class Account implements Serializable{
             joinColumns = @JoinColumn(name="account_id"),
             inverseJoinColumns = @JoinColumn(name = "film_id"))
     private Set<Film> desiredFilms = new HashSet<>();
-
 
 
     @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
