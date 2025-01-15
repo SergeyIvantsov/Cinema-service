@@ -55,8 +55,27 @@ public class AccountServiceImpl implements AccountService {
         FilmDto filmDto = filmService.get(idFilm);
         desiredFilms.remove(filmDto);
         update(1, accountDto);
-
     }
+
+
+
+    @Override
+    public void addFilmToDesireList(Integer accountId, Integer filmId) {
+    AccountDto accountDto = get(accountId);
+    FilmDto filmDto = filmService.get(filmId);
+    accountDto.getDesiredFilms().add(filmDto);
+    update(accountId, accountDto);
+    }
+
+    @Override
+    public void addFilmToWatchedList(Integer accountId, Integer filmId) {
+        AccountDto accountDto = get(accountId);
+        FilmDto filmDto = filmService.get(filmId);
+        accountDto.getWatchedFilms().add(filmDto);
+        update(accountId, accountDto);
+    }
+
+
     @Override
     public void deleteWatchedFilmFromAccount(Integer idFilm) {
         AccountDto accountDto = get(1);//toDo хардкод

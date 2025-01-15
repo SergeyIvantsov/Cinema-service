@@ -23,12 +23,10 @@ public class AddFilmToAccount extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer idFilm = ServletUtil.getIntegerParam(request, "id");
-        FilmDto filmDto = filmService.get(idFilm);
-        AccountDto accountDto = accountService.get(1);//toDo это хардкод на пока, потом убрать его
-        accountDto.getDesiredFilms().add(filmDto);
-        accountService.update(accountDto.getId(), accountDto);
 
-        request.getSession().setAttribute("MessageDesired", "Фильм "+filmDto.getTitle()+ " добавлен в список желаемых!");
+        accountService.addFilmToDesireList(1,idFilm);//toDo это хардкод на пока, потом убрать его
+
+        request.getSession().setAttribute("MessageDesired", "Фильм "+filmService.get(idFilm).getTitle()+ " добавлен в список желаемых!");
         response.sendRedirect("films_manager");
    }
 
