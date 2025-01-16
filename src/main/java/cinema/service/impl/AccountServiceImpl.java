@@ -7,6 +7,7 @@ import cinema.dto.FilmDto;
 import cinema.entity.Account;
 import cinema.service.AccountService;
 import cinema.service.FilmService;
+import cinema.utils.Constants;
 import cinema.utils.ConverterUtil;
 import java.util.List;
 import java.util.Set;
@@ -50,7 +51,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void deleteFilmFromAccount(Integer idFilm) {
-        AccountDto accountDto = get(1);//toDo хардкод
+        AccountDto accountDto = get(Constants.ACCOUNT_ID);
         Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
         FilmDto filmDto = filmService.get(idFilm);
         desiredFilms.remove(filmDto);
@@ -78,11 +79,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void deleteWatchedFilmFromAccount(Integer idFilm) {
-        AccountDto accountDto = get(1);//toDo хардкод
+        AccountDto accountDto = get(Constants.ACCOUNT_ID);
         Set<FilmDto> watchedFilms = accountDto.getWatchedFilms();
         FilmDto filmDto = filmService.get(idFilm);
         watchedFilms.remove(filmDto);
-        update(1, accountDto);
+        update(Constants.ACCOUNT_ID, accountDto);
     }
 
 

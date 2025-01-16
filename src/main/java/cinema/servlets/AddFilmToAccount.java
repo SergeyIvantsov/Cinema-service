@@ -6,6 +6,7 @@ import cinema.service.AccountService;
 import cinema.service.FilmService;
 import cinema.service.impl.AccountServiceImpl;
 import cinema.service.impl.FilmServiceImpl;
+import cinema.utils.Constants;
 import cinema.utils.HibernateUtil;
 import cinema.utils.ServletUtil;
 
@@ -24,7 +25,8 @@ public class AddFilmToAccount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer idFilm = ServletUtil.getIntegerParam(request, "id");
 
-        accountService.addFilmToDesireList(1,idFilm);//toDo это хардкод на пока, потом убрать его
+        accountService.addFilmToDesireList(Constants.ACCOUNT_ID,idFilm);
+
 
         request.getSession().setAttribute("MessageDesired", "Фильм "+filmService.get(idFilm).getTitle()+ " добавлен в список желаемых!");
         response.sendRedirect("films_manager");

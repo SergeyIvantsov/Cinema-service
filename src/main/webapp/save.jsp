@@ -33,7 +33,6 @@
     </label>
     <br/>
 <input type=submit value="Submit">
-<%--    <button>Submit</button>--%>
 </form>
 <br/>
 <a href="films_manager">Return to All Films</a><br/>

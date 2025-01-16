@@ -1,12 +1,10 @@
-<%@include file="hat.jsp"%>
+<%@include file="hat.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login / Register</title>
+    <title>Menu</title>
 </head>
-
 <body>
-<br>
 <br>
 <h2>Menu</h2>
 <a href="films_manager">Go to All Films</a>

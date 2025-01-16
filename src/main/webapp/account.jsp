@@ -31,7 +31,7 @@
 <br>
 <td>UserName: <%= user.getUserName()%>
 </td>
-<h1>Desired Films:</h1>
+<h2>Desired Films:</h2>
 <table>
     <tr>
         <td><B>Film ID</B></td>
@@ -66,7 +66,7 @@
 </table>
 <br/>
 
-<h1>Watched Films:</h1>
+<h2>Watched Films:</h2>
 <table>
     <tr>
         <td><B>Film ID</B></td>

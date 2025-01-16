@@ -20,7 +20,8 @@
 
 
 <body>
-
+<a href="index.jsp">Back to Menu</a>
+<br/>
 <form action="find_film" method="get">
   <label>Find film by title:</label>
   <input name="find_film" type="text" placeholder="Enter film title"/>

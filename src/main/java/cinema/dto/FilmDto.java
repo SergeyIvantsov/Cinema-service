@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +26,5 @@ public class FilmDto {
     private String genre;
 
     private String director;
-
-//    private List<String> actors;
 
 }

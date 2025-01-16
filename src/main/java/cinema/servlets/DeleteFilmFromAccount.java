@@ -26,6 +26,7 @@ public class DeleteFilmFromAccount extends HttpServlet {
         response.sendRedirect("account");
     }
 
+
     @Override
     public void destroy() {
         this.accountService.closeDao();

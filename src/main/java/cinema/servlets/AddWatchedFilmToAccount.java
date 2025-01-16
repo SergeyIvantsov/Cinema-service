@@ -6,6 +6,7 @@ import cinema.service.AccountService;
 import cinema.service.FilmService;
 import cinema.service.impl.AccountServiceImpl;
 import cinema.service.impl.FilmServiceImpl;
+import cinema.utils.Constants;
 import cinema.utils.HibernateUtil;
 import cinema.utils.ServletUtil;
 
@@ -24,7 +25,8 @@ public class AddWatchedFilmToAccount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer idWatchFilm = ServletUtil.getIntegerParam(request, "id");
 
-        accountService.addFilmToWatchedList(1, idWatchFilm);//toDo это хардкод на пока, потом убрать его
+        accountService.addFilmToWatchedList(Constants.ACCOUNT_ID, idWatchFilm);
+
 
         request.getSession().setAttribute("MessageWatched", "Фильм "+filmService.get(idWatchFilm).getTitle()+ " добавлен в список просмотренных!");
         response.sendRedirect("films_manager");

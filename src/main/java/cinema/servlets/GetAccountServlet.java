@@ -3,13 +3,13 @@ package cinema.servlets;
 import cinema.dto.AccountDto;
 import cinema.dto.FilmDto;
 import cinema.dto.UserDto;
-import cinema.entity.Film;
 import cinema.service.AccountService;
 import cinema.service.FilmService;
 import cinema.service.UserService;
 import cinema.service.impl.AccountServiceImpl;
 import cinema.service.impl.FilmServiceImpl;
 import cinema.service.impl.UserServiceImpl;
+import cinema.utils.Constants;
 import cinema.utils.HibernateUtil;
 import cinema.utils.ServletUtil;
 
@@ -31,7 +31,7 @@ public class GetAccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer accountId = ServletUtil.getIntegerParam(req,"id");
-        AccountDto accountDto = this.accountService.get(1);//toDo убрать хардкод айдишника
+        AccountDto accountDto = this.accountService.get(Constants.ACCOUNT_ID);
         Integer userId = accountDto.getUserDto().getId();
         Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
         Set<FilmDto> watchedFilms = accountDto.getWatchedFilms();
