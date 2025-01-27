@@ -1,4 +1,5 @@
 <%@ page import="cinema.dto.FilmDto"%>
+<%@ page import="org.apache.commons.lang3.StringUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -36,13 +37,18 @@
         Fill film director:
         <input name="director" type="text" value="<%=filmDto.getDirector()%>" required>
     </label>
+
+<%--    <label>--%>
+<%--        Fill film actors:--%>
+<%--        <input name="actors" type="text" value="<%= StringUtils.join(filmDto.getActorsDto(), ", ") %>" required>--%>
+<%--    </label>--%>
+
     <br/>
     <input type=submit value="Submit">
 </form>
 <br/>
 <a href="films_manager">BACK TO ALL FILMS</a><br/>
 
-</form>
 
 </body>
 </html>

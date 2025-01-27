@@ -31,10 +31,16 @@
         Fill film director:
         <input name="director" type="text" required>
     </label>
+
+<%--    <label>--%>
+<%--        Fill film actors:--%>
+<%--        <input name="actors" type="text" required>--%>
+<%--    </label>--%>
     <br/>
 <input type=submit value="Submit">
 </form>
 <br/>
-<a href="films_manager">Return to All Films</a><br/>
+<a href="films_manager">Return to All Films</a>
+<br/>
 </body>
 </html>

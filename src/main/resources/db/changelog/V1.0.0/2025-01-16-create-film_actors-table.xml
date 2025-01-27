@@ -11,15 +11,10 @@
             <column name="film_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
+            <column name="actor_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="surname" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="age" type="INT">
-                <constraints nullable="false"/>
-            </column>
+
         </createTable>
 
     </changeSet>
@@ -32,5 +27,12 @@
                                  referencedColumnNames="id"/>
     </changeSet>
 
+    <changeSet id="3" author="sergey">
+        <addForeignKeyConstraint baseTableName="film_actors"
+                                 baseColumnNames="actor_id"
+                                 constraintName="film_actors_actor_id"
+                                 referencedTableName="actors"
+                                 referencedColumnNames="id"/>
+    </changeSet>
 
 </databaseChangeLog>

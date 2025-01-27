@@ -20,14 +20,34 @@ public class ListFilmServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final List<FilmDto> filmDtoList = this.filmService.getAll();
+
+        int page = 1;
+        int pageSize =5;
+        String pageParam = req.getParameter("page");
+        if (pageParam != null && !pageParam.isEmpty()) {
+            try {
+                page = Integer.parseInt(pageParam);
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
+        }
+
+        List<FilmDto> filmDtoList = filmService.getFilmsForPage(page, pageSize);
 
         req.setAttribute("films", filmDtoList);
+        req.setAttribute("filmsSize", filmService.getTotalFilmCount());
+        req.setAttribute("currentPage", page);
+        req.setAttribute("pageSize", pageSize);
+
+        int totalFilms = filmService.getTotalFilmCount();
+        int totalPages = (int) Math.ceil((double) totalFilms / pageSize);
+        req.setAttribute("totalPages", totalPages);
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/films_manager.jsp");
         requestDispatcher.forward(req, resp);
     }
+
 
     @Override
     public void destroy() {

@@ -1,13 +1,9 @@
 package cinema.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,5 +22,7 @@ public class FilmDto {
     private String genre;
 
     private String director;
+
+    private Set<ActorDto> actorsDto = new HashSet<>();
 
 }

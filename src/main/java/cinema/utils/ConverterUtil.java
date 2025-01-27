@@ -2,9 +2,11 @@ package cinema.utils;
 
 
 import cinema.dto.AccountDto;
+import cinema.dto.ActorDto;
 import cinema.dto.FilmDto;
 import cinema.dto.UserDto;
 import cinema.entity.Account;
+import cinema.entity.Actor;
 import cinema.entity.Film;
 import cinema.entity.User;
 
@@ -13,7 +15,29 @@ import java.util.Set;
 
 public class ConverterUtil {
 
+    public static ActorDto convertActor(Actor actor) {
+      return   ActorDto.builder().id(actor.getId())
+              .actorName(actor.getActorName())
+              .actorSurname(actor.getActorSurname()).build();
+    }
+
+    public static Actor convertActor(ActorDto actordto) {
+        return   Actor.builder().id(actordto.getId())
+                .actorName(actordto.getActorName())
+                .actorSurname(actordto.getActorSurname()).build();
+    }
+
+
     public static FilmDto convertFilm(Film film) {
+        Set<Actor> actors = film.getActors();
+        Set<ActorDto> actorDto = new HashSet<>();
+
+        if (actors != null) {
+            for (Actor actor : actors) {
+                actorDto.add(convertActor(actor));
+            }
+        }
+
         return FilmDto.builder()
                 .id(film.getId())
                 .title(film.getTitle())
@@ -21,11 +45,17 @@ public class ConverterUtil {
                 .year(film.getYear())
                 .genre(film.getGenre())
                 .director(film.getDirector())
+                .actorsDto(actorDto)
                 .build();
     }
 
 
     public static Film convertFilm(FilmDto dto) {
+        Set<ActorDto> actorsDto = dto.getActorsDto();
+        Set<Actor> actorsConv = new HashSet<>();
+        for (ActorDto actorDto : actorsDto) {
+            actorsConv.add(convertActor(actorDto));
+        }
         return Film.builder()
                 .id(dto.getId())
                 .title(dto.getTitle())
@@ -33,6 +63,7 @@ public class ConverterUtil {
                 .year(dto.getYear())
                 .genre(dto.getGenre())
                 .director(dto.getDirector())
+                .actors(actorsConv)
                 .build();
     }
 

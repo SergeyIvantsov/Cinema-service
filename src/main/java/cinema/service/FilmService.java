@@ -15,6 +15,10 @@ public interface FilmService {
 
     List<FilmDto> getAll();
 
+    List<FilmDto> getFilmsForPage(int page, int pageSize);
+
+    int getTotalFilmCount();
+
     List<FilmDto> findByName(String search);
 
     FilmDto update(Integer id, FilmDto film);

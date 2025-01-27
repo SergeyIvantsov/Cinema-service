@@ -1,9 +1,6 @@
 package cinema.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -46,5 +43,17 @@ public class Film implements Serializable {
             CascadeType.REFRESH},
             mappedBy = "watchedFilms")
     private Set<Account> accounts2 = new HashSet<>();
+
+//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST,
+//            CascadeType.REFRESH},
+//            mappedBy = "filmsForActors")
+//    private Set<Actor>actors = new HashSet<>();
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            fetch = FetchType.LAZY)
+    @JoinTable(name = "film_actors",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    private Set<Actor> actors = new HashSet<>();
 
 }
