@@ -1,14 +1,8 @@
 package cinema.utils;
 
 
-import cinema.dto.AccountDto;
-import cinema.dto.ActorDto;
-import cinema.dto.FilmDto;
-import cinema.dto.UserDto;
-import cinema.entity.Account;
-import cinema.entity.Actor;
-import cinema.entity.Film;
-import cinema.entity.User;
+import cinema.dto.*;
+import cinema.entity.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +21,20 @@ public class ConverterUtil {
                 .actorSurname(actordto.getActorSurname()).build();
     }
 
+    public static Director convertDirector(DirectorDto directorDto) {
+        return   Director.builder().id(directorDto.getId())
+                .directorName(directorDto.getDirectorName())
+                .directorSurname(directorDto.getDirectorSurname())
+                .build();
+    }
+
+
+    public static DirectorDto convertDirector(Director director) {
+        return   DirectorDto.builder().id(director.getId())
+                .directorName(director.getDirectorName())
+                .directorSurname(director.getDirectorSurname())
+                .build();
+    }
 
     public static FilmDto convertFilm(Film film) {
         Set<Actor> actors = film.getActors();
@@ -44,7 +52,8 @@ public class ConverterUtil {
                 .description(film.getDescription())
                 .year(film.getYear())
                 .genre(film.getGenre())
-                .director(film.getDirector())
+                .directorName(film.getDirectorName())
+                .director(convertDirector(film.getDirector()))
                 .actorsDto(actorDto)
                 .build();
     }
@@ -62,7 +71,8 @@ public class ConverterUtil {
                 .description(dto.getDescription())
                 .year(dto.getYear())
                 .genre(dto.getGenre())
-                .director(dto.getDirector())
+                .directorName(dto.getDirectorName())
+                .director(convertDirector(dto.getDirector()))
                 .actors(actorsConv)
                 .build();
     }

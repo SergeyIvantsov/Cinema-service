@@ -19,14 +19,16 @@
     </changeSet>
 
     <changeSet id="2" author="sergey">
-        <addForeignKeyConstraint baseTableName="watched_films_for_accounts" baseColumnNames="account_id"
+        <addForeignKeyConstraint baseTableName="watched_films_for_accounts"
+                                 baseColumnNames="account_id"
                                  constraintName="watched_films_for_accounts_account_id"
                                  referencedTableName="accounts"
                                  referencedColumnNames="id"/>
     </changeSet>
 
     <changeSet id="3" author="sergey">
-        <addForeignKeyConstraint baseTableName="watched_films_for_accounts" baseColumnNames="watched_film_id"
+        <addForeignKeyConstraint baseTableName="watched_films_for_accounts"
+                                 baseColumnNames="watched_film_id"
                                  constraintName="watched_films_for_accounts_film_id"
                                  referencedTableName="films"
                                  referencedColumnNames="id"/>

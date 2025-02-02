@@ -1,7 +1,5 @@
 package cinema.servlets;
 
-import cinema.dto.AccountDto;
-import cinema.dto.FilmDto;
 import cinema.service.AccountService;
 import cinema.service.FilmService;
 import cinema.service.impl.AccountServiceImpl;

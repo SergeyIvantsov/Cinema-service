@@ -1,6 +1,7 @@
 package cinema.utils;
 
 import cinema.dto.ActorDto;
+import cinema.dto.DirectorDto;
 import cinema.dto.FilmDto;
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,11 +20,23 @@ public class ServletUtil {
                 .description(getStringParam(req, "description"))
                 .year(getIntegerParam(req, "year"))
                 .genre(getStringParam(req, "genre"))
-                .director(getStringParam(req, "director"))
+                .directorName(getStringParam(req, "directorName"))
+                .director(getDirectorFromRequest(req))
                 .actorsDto(getActorsFromRequest(req))
                 .build();
     }
 
+    private static DirectorDto getDirectorFromRequest(HttpServletRequest req) {
+        String directorParam = getStringParam(req, "director");
+        DirectorDto directorDto = new DirectorDto();
+        if (directorParam != null) {
+            String[] nameSurname = directorParam.trim().split(" ");
+
+            directorDto.setDirectorName(nameSurname[0]);
+            directorDto.setDirectorSurname(nameSurname[1]);
+        }
+        return directorDto;
+    }
 
     private static Set<ActorDto> getActorsFromRequest(HttpServletRequest req) {
         String actorsParam = getStringParam(req, "actors");

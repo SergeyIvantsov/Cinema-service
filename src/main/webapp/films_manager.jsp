@@ -80,14 +80,6 @@
         </td>
         <td><%= film.getDirector() %>
         </td>
-<%--        <td><%= film.getActorsDto() %>--%>
-<%--        </td>--%>
-<%--        <td>--%>
-<%--<c:forEach var="value" items="${film}">--%>
-<%--    <c:out value="${value.actorName}" />--%>
-<%--    <c:out value="${value.actorSurname}" />--%>
-<%--</c:forEach>--%>
-<%--        </td--%>
 
         <td>
             <ul>
@@ -132,14 +124,6 @@
 </table>
 <br/>
 <br/>
-<%-- Пагинация --%>
-<%--<td class="action-buttons">--%>
-<%--    <form name="currentPage" method="get" action="films_manager">--%>
-<%--        <button name="id" value="<%= if (currentPage > 1)%>">Mark Film as watched</button>--%>
-<%--    </form>--%>
-<%--</td>--%>
-
-
 
 <div class="pagination">
     <% Integer currentPage = (Integer) request.getAttribute("currentPage"); %>
@@ -156,6 +140,5 @@
     <% } %>
 </div>
 <br/>
-
 </body>
 </html>

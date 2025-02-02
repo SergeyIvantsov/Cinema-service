@@ -5,7 +5,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.30.xsd">
 
+    <include file="db/changelog/V1.0.0/2025-01-29-create-directors-table.xml"/>
+    <include file="db/changelog/V1.0.0/2025-02-02-fill-directors-table.xml"/>
     <include file="db/changelog/V1.0.0/2024-12-29-create-films-table.xml"/>
+
     <include file="db/changelog/V1.0.0/2025-01-06-create-users-table.xml"/>
     <include file="db/changelog/V1.0.0/2025-01-06-create-accounts-table.xml"/>
     <include file="db/changelog/V1.0.0/2025-01-06-create-films_for_accounts.xml"/>
@@ -14,4 +17,6 @@
     <include file="db/changelog/V1.0.0/2025-01-18-create-actors-table.xml"/>
     <include file="db/changelog/V1.0.0/2025-01-16-create-film_actors-table.xml"/>
 
+    <include file="db/changelog/V1.0.1/2025-02-02-add-new-column-for-films.xml"/>
+    <include file="db/changelog/V1.0.1/2025-02-02-fill-id_director-in-films.xml"/>
 </databaseChangeLog>

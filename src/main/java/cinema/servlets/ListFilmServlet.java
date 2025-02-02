@@ -33,14 +33,13 @@ public class ListFilmServlet extends HttpServlet {
         }
 
         List<FilmDto> filmDtoList = filmService.getFilmsForPage(page, pageSize);
-
-        req.setAttribute("films", filmDtoList);
-        req.setAttribute("filmsSize", filmService.getTotalFilmCount());
-        req.setAttribute("currentPage", page);
-        req.setAttribute("pageSize", pageSize);
-
         int totalFilms = filmService.getTotalFilmCount();
         int totalPages = (int) Math.ceil((double) totalFilms / pageSize);
+
+        req.setAttribute("films", filmDtoList);
+        req.setAttribute("filmsSize", totalFilms);
+        req.setAttribute("currentPage", page);
+        req.setAttribute("pageSize", pageSize);
         req.setAttribute("totalPages", totalPages);
 
         RequestDispatcher requestDispatcher = getServletContext()

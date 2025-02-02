@@ -28,13 +28,6 @@ public class Actor implements Serializable {
     private String actorSurname;
 
 
-//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH,
-//            CascadeType.PERSIST},fetch = FetchType.EAGER)
-//    @JoinTable(name = "film_actors",
-//            joinColumns = @JoinColumn(name="actor_id"),
-//            inverseJoinColumns = @JoinColumn(name = "film_id"))
-//    Set<Film> filmsForActors = new HashSet<>();
-
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH,
             CascadeType.PERSIST},fetch = FetchType.LAZY,
             mappedBy = "actors")

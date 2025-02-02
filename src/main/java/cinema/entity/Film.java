@@ -31,23 +31,22 @@ public class Film implements Serializable {
     @Column
     private String genre;
 
-    @Column
-    private String director;
+    @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn (name = "id_director")
+    private Director director;
 
-    @ManyToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+    @Column(name = "director")
+    private String directorName;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.REFRESH},
             mappedBy = "desiredFilms")
-   private Set<Account> accounts =new HashSet<>();
+    private Set<Account> accounts = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST,
             CascadeType.REFRESH},
             mappedBy = "watchedFilms")
     private Set<Account> accounts2 = new HashSet<>();
-
-//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST,
-//            CascadeType.REFRESH},
-//            mappedBy = "filmsForActors")
-//    private Set<Actor>actors = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             fetch = FetchType.LAZY)
