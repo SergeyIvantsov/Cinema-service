@@ -21,8 +21,6 @@ public class FilmDto {
 
     private String genre;
 
-    private String directorName;
-
     private DirectorDto director;
 
     private Set<ActorDto> actorsDto = new HashSet<>();

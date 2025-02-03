@@ -20,7 +20,6 @@ public class ServletUtil {
                 .description(getStringParam(req, "description"))
                 .year(getIntegerParam(req, "year"))
                 .genre(getStringParam(req, "genre"))
-                .directorName(getStringParam(req, "directorName"))
                 .director(getDirectorFromRequest(req))
                 .actorsDto(getActorsFromRequest(req))
                 .build();
@@ -31,7 +30,6 @@ public class ServletUtil {
         DirectorDto directorDto = new DirectorDto();
         if (directorParam != null) {
             String[] nameSurname = directorParam.trim().split(" ");
-
             directorDto.setDirectorName(nameSurname[0]);
             directorDto.setDirectorSurname(nameSurname[1]);
         }

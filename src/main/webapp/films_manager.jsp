@@ -78,7 +78,8 @@
         </td>
         <td><%= film.getGenre() %>
         </td>
-        <td><%= film.getDirector() %>
+        <td><%= film.getDirector().getDirectorName() %>
+            <%=film.getDirector().getDirectorSurname()%>
         </td>
 
         <td>

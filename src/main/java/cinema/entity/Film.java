@@ -32,11 +32,9 @@ public class Film implements Serializable {
     private String genre;
 
     @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn (name = "id_director")
+    @JoinColumn (name = "director_id")
     private Director director;
 
-    @Column(name = "director")
-    private String directorName;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.REFRESH},

@@ -51,7 +51,9 @@
         <td><%= film.getDescription() %></td>
         <td><%= film.getYear() %></td>
         <td><%= film.getGenre() %></td>
-        <td><%= film.getDirector() %></td>
+        <td><%= film.getDirector().getDirectorName() %>
+            <%= film.getDirector().getDirectorSurname() %>
+        </td>
 
         <td class="action-buttons">
             <form name="delete" method="post" action="delete_film_from_account">
@@ -86,7 +88,9 @@
         <td><%= film.getDescription() %></td>
         <td><%= film.getYear() %></td>
         <td><%= film.getGenre() %></td>
-        <td><%= film.getDirector() %></td>
+        <td><%= film.getDirector().getDirectorName() %>
+            <%= film.getDirector().getDirectorSurname() %>
+        </td>
 
         <td class="action-buttons">
             <form name="delete" method="post" action="delete_watched_film">

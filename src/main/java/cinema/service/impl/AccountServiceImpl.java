@@ -55,7 +55,7 @@ public class AccountServiceImpl implements AccountService {
         Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
         FilmDto filmDto = filmService.get(idFilm);
         desiredFilms.remove(filmDto);
-        update(1, accountDto);
+        update(Constants.ACCOUNT_ID, accountDto);
     }
 
 

@@ -5,6 +5,7 @@ import cinema.dto.UserDto;
 import java.util.List;
 
 public interface UserService {
+
     UserDto save(UserDto t);
 
 
@@ -21,8 +22,6 @@ public interface UserService {
 
 
     void closeDao();
-
-
 
 
 }

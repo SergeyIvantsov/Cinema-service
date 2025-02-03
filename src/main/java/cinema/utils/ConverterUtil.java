@@ -52,7 +52,7 @@ public class ConverterUtil {
                 .description(film.getDescription())
                 .year(film.getYear())
                 .genre(film.getGenre())
-                .directorName(film.getDirectorName())
+//                .directorName(film.getDirectorName())
                 .director(convertDirector(film.getDirector()))
                 .actorsDto(actorDto)
                 .build();
@@ -71,7 +71,6 @@ public class ConverterUtil {
                 .description(dto.getDescription())
                 .year(dto.getYear())
                 .genre(dto.getGenre())
-                .directorName(dto.getDirectorName())
                 .director(convertDirector(dto.getDirector()))
                 .actors(actorsConv)
                 .build();
