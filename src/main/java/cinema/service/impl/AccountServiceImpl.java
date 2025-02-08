@@ -20,7 +20,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public AccountDto save(AccountDto accountDto) {
         Account account = ConverterUtil.convertAccount(accountDto);
-        accountDto.setId(accountDao.save(account).getId());
+        Integer id = accountDao.save(account).getId();
+        accountDto.setId(id);
         return accountDto;
     }
 

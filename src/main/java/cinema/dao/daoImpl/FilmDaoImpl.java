@@ -1,6 +1,7 @@
 package cinema.dao.daoImpl;
 
 import cinema.dao.FilmDao;
+import cinema.entity.Director;
 import cinema.entity.Film;
 import cinema.utils.ExecutorUtil;
 import cinema.utils.HibernateUtil;
@@ -20,6 +21,10 @@ public class FilmDaoImpl implements FilmDao {
     @Override
     public Film save(Film film) {
         return ExecutorUtil.executeHibernate(this.entityManager, em -> {
+            Director existingDirector = em.find(Director.class, film.getDirector().getId());
+
+            film.setDirector(existingDirector);  // Устанавливаем привязанный объект
+
             em.persist(film);
             return film;
         });

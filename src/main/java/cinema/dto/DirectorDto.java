@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class DirectorDto {
 
-    private int id;
+    private Integer id;
 
     private String directorName;
 

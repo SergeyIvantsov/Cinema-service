@@ -22,7 +22,7 @@ public class ListFilmServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int page = 1;
-        int pageSize =5;
+        int pageSize = 5;
         String pageParam = req.getParameter("page");
         if (pageParam != null && !pageParam.isEmpty()) {
             try {

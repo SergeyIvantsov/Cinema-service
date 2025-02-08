@@ -3,6 +3,9 @@ package cinema.utils;
 import cinema.dto.ActorDto;
 import cinema.dto.DirectorDto;
 import cinema.dto.FilmDto;
+import cinema.entity.Director;
+import cinema.service.DirectorService;
+import cinema.service.impl.DirectorServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +18,8 @@ import java.util.stream.Collectors;
 public class ServletUtil {
 
     public static FilmDto mapFilm(HttpServletRequest req) {
-        return FilmDto.builder()
+
+        FilmDto newFilmDto = FilmDto.builder()
                 .title(getStringParam(req, "title"))
                 .description(getStringParam(req, "description"))
                 .year(getIntegerParam(req, "year"))
@@ -23,18 +27,30 @@ public class ServletUtil {
                 .director(getDirectorFromRequest(req))
                 .actorsDto(getActorsFromRequest(req))
                 .build();
+
+        return newFilmDto;
     }
 
-    private static DirectorDto getDirectorFromRequest(HttpServletRequest req) {
-        String directorParam = getStringParam(req, "director");
+
+    public static DirectorDto getDirectorFromRequest(HttpServletRequest req) {
+        Integer directorId = getIntegerParam(req, "director");
+
         DirectorDto directorDto = new DirectorDto();
-        if (directorParam != null) {
-            String[] nameSurname = directorParam.trim().split(" ");
-            directorDto.setDirectorName(nameSurname[0]);
-            directorDto.setDirectorSurname(nameSurname[1]);
+        if (directorId != null) {
+            DirectorService directorService = new DirectorServiceImpl();
+            DirectorDto directorFromDb = directorService.get(directorId);
+            if (directorFromDb != null) {
+                directorDto.setId(directorFromDb.getId());
+                directorDto.setDirectorName(directorFromDb.getDirectorName());
+                directorDto.setDirectorSurname(directorFromDb.getDirectorSurname());
+                System.out.println(directorDto.toString());
+            } else {
+                System.out.println("Такого режиссера нету!!!");
+            }
         }
         return directorDto;
     }
+
 
     private static Set<ActorDto> getActorsFromRequest(HttpServletRequest req) {
         String actorsParam = getStringParam(req, "actors");

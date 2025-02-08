@@ -39,7 +39,6 @@ public class GetAccountServlet extends HttpServlet {
 
         req.setAttribute("account", accountDto);
         req.setAttribute("user", userDto);
-        //обратиться к сервису и получ. список фильмов, которые неоходимо
         req.setAttribute("films", desiredFilms);
         req.setAttribute("watched_films", watchedFilms);
 

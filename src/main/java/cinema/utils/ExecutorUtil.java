@@ -14,6 +14,7 @@ public class ExecutorUtil {
             return t;
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
+            e.printStackTrace();
             return null;
         }
     }

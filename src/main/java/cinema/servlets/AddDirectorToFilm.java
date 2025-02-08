@@ -18,16 +18,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "saveFilmServlet", value = "/save")
-public class SaveFilmServlet extends HttpServlet {
-    private final FilmService filmService = new FilmServiceImpl();
-    private final DirectorService directorService = new DirectorServiceImpl();
+@WebServlet(name = "addDirectorToFilm", value = "/addDirector")
+public class AddDirectorToFilm extends HttpServlet {
 
+    private final DirectorService directorService = new DirectorServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<DirectorDto> directorDtoList = directorService.getAll();
-
         req.setAttribute("directorDtoList", directorDtoList);
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/save.jsp");
@@ -36,14 +34,17 @@ public class SaveFilmServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        filmService.save(ServletUtil.mapFilm(req));
+
+        directorService.save(ServletUtil.getDirectorFromRequest(req));
         resp.sendRedirect("films_manager");
     }
 
     @Override
     public void destroy() {
-        this.filmService.closeDao();
+        this.directorService.closeDao();
         HibernateUtil.close();
         super.destroy();
     }
+    
+    
 }

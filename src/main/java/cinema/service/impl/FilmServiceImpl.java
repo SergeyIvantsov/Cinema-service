@@ -1,9 +1,12 @@
 package cinema.service.impl;
 
+import cinema.dao.DirectorDao;
 import cinema.dao.FilmDao;
 import cinema.dao.daoImpl.FilmDaoImpl;
 import cinema.dto.FilmDto;
+import cinema.entity.Director;
 import cinema.entity.Film;
+import cinema.service.DirectorService;
 import cinema.service.FilmService;
 import cinema.utils.ConverterUtil;
 
@@ -12,14 +15,22 @@ import java.util.stream.Collectors;
 
 public class FilmServiceImpl implements FilmService {
 
+    private final DirectorService directorService = new DirectorServiceImpl();
+
     private final FilmDao filmDao = new FilmDaoImpl();
 
     @Override
     public FilmDto save(FilmDto filmDto) {
         Film film = ConverterUtil.convertFilm(filmDto);
+        Film save;
+        try {
+            save = filmDao.save(film);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
 
-        filmDto.setId(filmDao.save(film).getId());
-
+        filmDto.setId(save.getId());
         return filmDto;
     }
 
@@ -48,7 +59,6 @@ public class FilmServiceImpl implements FilmService {
     public int getTotalFilmCount() {
         return filmDao.getAll().size();
     }
-
 
 
     @Override

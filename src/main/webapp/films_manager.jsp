@@ -82,19 +82,19 @@
             <%=film.getDirector().getDirectorSurname()%>
         </td>
 
-        <td>
-            <ul>
-                <%
-                    for (ActorDto actorDto : film.getActorsDto()) {
-                %>
-                <li><%= actorDto.getActorName() %>
-                    <%= actorDto.getActorSurname() %>
-                </li>
-                <%
-                    }
-                %>
-            </ul>
-        </td>
+<%--        <td>--%>
+<%--            <ul>--%>
+<%--                <%--%>
+<%--                    for (ActorDto actorDto : film.getActorsDto()) {--%>
+<%--                %>--%>
+<%--                <li><%= actorDto.getActorName() %>--%>
+<%--                    <%= actorDto.getActorSurname() %>--%>
+<%--                </li>--%>
+<%--                <%--%>
+<%--                    }--%>
+<%--                %>--%>
+<%--            </ul>--%>
+<%--        </td>--%>
 
 
         <td class="action-buttons">
@@ -132,7 +132,6 @@
     <%! Integer previousPage; %>
     <a href="?page=<%= previousPage=currentPage - 1 %>">Previous Page<%=previousPage%></a>
     <% } %>
-
 
     <% Integer totalPages = (Integer) request.getAttribute("totalPages"); %>
     <% if (currentPage < totalPages) { %>

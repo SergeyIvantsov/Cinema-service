@@ -1,4 +1,6 @@
-
+<%@ page import="cinema.entity.Director" %>
+<%@ page import="java.util.List" %>
+<%@ page import="cinema.dto.DirectorDto" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -28,16 +30,28 @@
     </label>
     <br/>
     <label>
-        Fill film director:
-        <input name="director" type="text" required>
+        Select film director:
+        <select name="director" required>
+            <option value="" selected>Select Director</option>
+            <%
+                List<DirectorDto> directors = (List<DirectorDto>) request.getAttribute("directorDtoList");
+                for (DirectorDto director : directors) {
+            %>
+            <option value="<%= director.getId() %>">
+                <%= director.getDirectorName() + " " + director.getDirectorSurname() %>
+            </option>
+            <%
+                }
+            %>
+        </select>
     </label>
 
-<%--    <label>--%>
-<%--        Fill film actors:--%>
-<%--        <input name="actors" type="text" required>--%>
-<%--    </label>--%>
+    <%--    <label>--%>
+    <%--        Fill film actors:--%>
+    <%--        <input name="actors" type="text" required>--%>
+    <%--    </label>--%>
     <br/>
-<input type=submit value="Submit">
+    <input type=submit value="Submit">
 </form>
 <br/>
 <a href="films_manager">Return to All Films</a>

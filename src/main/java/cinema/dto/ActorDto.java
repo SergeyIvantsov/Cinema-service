@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ActorDto {
 
-    private int id;
+    private Integer id;
 
     private String actorName;
 
