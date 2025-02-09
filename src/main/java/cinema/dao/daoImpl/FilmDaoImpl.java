@@ -86,6 +86,15 @@ public class FilmDaoImpl implements FilmDao {
     }
 
     @Override
+    public List<Film> findByDirector (Integer directorId) {
+        String query = "FROM Film f WHERE f.director.id = :directorId";
+        return ExecutorUtil.executeHibernate(this.entityManager,
+                em -> em.createQuery(query, Film.class)
+                    .setParameter("directorId", directorId)
+                    .getResultList() );
+    }
+
+    @Override
     public void close() {
         if (this.entityManager.isOpen()) {
             this.entityManager.close();

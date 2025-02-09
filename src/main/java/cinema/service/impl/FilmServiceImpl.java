@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 
 public class FilmServiceImpl implements FilmService {
 
-    private final DirectorService directorService = new DirectorServiceImpl();
-
     private final FilmDao filmDao = new FilmDaoImpl();
 
     @Override
@@ -77,6 +75,13 @@ public class FilmServiceImpl implements FilmService {
     @Override
     public boolean delete(Integer id) {
         return filmDao.delete(id);
+    }
+
+    @Override
+    public List<FilmDto> getFilmsByDirector (Integer directorId) {
+        return filmDao.findByDirector(directorId).stream()
+                .map(ConverterUtil::convertFilm)
+                .collect(Collectors.toList());
     }
 
     @Override

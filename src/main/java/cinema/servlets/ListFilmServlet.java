@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "listFilmServlet", value = "/films_manager")
-public class ListFilmServlet extends HttpServlet {
+public class    ListFilmServlet extends HttpServlet {
     private final FilmService filmService = new FilmServiceImpl();
 
     @Override

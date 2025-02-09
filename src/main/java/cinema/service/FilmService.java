@@ -26,6 +26,7 @@ public interface FilmService {
 
     boolean delete(Integer id);
 
+    List<FilmDto> getFilmsByDirector (Integer directorId);
 
     void closeDao();
 

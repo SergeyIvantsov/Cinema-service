@@ -8,5 +8,10 @@ public interface FilmDao extends DAO<Film>{
 
     List<Film> getFilmsPage(int offset, int limit);
 
-    public List<Film> findByName(String name);
+    List<Film> findByName(String name);
+
+    List<Film> findByDirector(Integer directorId);
+
+
+
 }
