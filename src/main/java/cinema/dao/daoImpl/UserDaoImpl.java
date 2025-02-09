@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User update(Integer id, User user) {
         return ExecutorUtil.executeHibernate(this.entityManager, em -> {
-            User updatedUser = this.entityManager.find(User.class, id);
+            User updatedUser = em.find(User.class, id);
             if (updatedUser != null) {
                 updatedUser = em.merge(user);
             }

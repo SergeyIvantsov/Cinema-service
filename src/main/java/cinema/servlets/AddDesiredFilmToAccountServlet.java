@@ -1,7 +1,10 @@
 package cinema.servlets;
 
 import cinema.service.AccountService;
+import cinema.service.FilmService;
 import cinema.service.impl.AccountServiceImpl;
+import cinema.service.impl.FilmServiceImpl;
+import cinema.utils.Constants;
 import cinema.utils.HibernateUtil;
 import cinema.utils.ServletUtil;
 
@@ -12,24 +15,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "deleteWatchedFilmFromAccount", value = "/delete_watched_film")
-public class DeleteWatchedFilmFromAccount extends HttpServlet {
+@WebServlet(name = "addFilmToAccount", value = "/add")
+public class AddDesiredFilmToAccountServlet extends HttpServlet {
+    private FilmService filmService = new FilmServiceImpl();
     private AccountService accountService = new AccountServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer idWatchFilm = ServletUtil.getIntegerParam(request, "id");
-        accountService.deleteWatchedFilmFromAccount(idWatchFilm);
-        response.sendRedirect("account");
-    }
+        Integer idFilm = ServletUtil.getIntegerParam(request, "id");
 
+        accountService.addFilmToDesireList(Constants.ACCOUNT_ID, idFilm);
+
+        request.getSession().setAttribute("MessageDesired", "Фильм "+filmService.get(idFilm).getTitle()+ " добавлен в список желаемых!");
+        response.sendRedirect("films_manager");
+   }
 
     @Override
     public void destroy() {
+        this.filmService.closeDao();
         this.accountService.closeDao();
         HibernateUtil.close();
         super.destroy();
     }
-
-
 
 }

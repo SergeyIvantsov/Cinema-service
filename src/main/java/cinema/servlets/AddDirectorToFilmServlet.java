@@ -3,9 +3,7 @@ package cinema.servlets;
 
 import cinema.dto.DirectorDto;
 import cinema.service.DirectorService;
-import cinema.service.FilmService;
 import cinema.service.impl.DirectorServiceImpl;
-import cinema.service.impl.FilmServiceImpl;
 import cinema.utils.HibernateUtil;
 import cinema.utils.ServletUtil;
 
@@ -19,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "addDirectorToFilm", value = "/addDirector")
-public class AddDirectorToFilm extends HttpServlet {
+public class AddDirectorToFilmServlet extends HttpServlet {
 
     private final DirectorService directorService = new DirectorServiceImpl();
 

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "addWatchedFilmToAccount", value = "/add_watched")
-public class AddWatchedFilmToAccount extends HttpServlet {
+public class AddWatchedFilmToAccountServlet extends HttpServlet {
     private FilmService filmService = new FilmServiceImpl();
     private AccountService accountService = new AccountServiceImpl();
 

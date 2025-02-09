@@ -22,9 +22,7 @@ public class FilmDaoImpl implements FilmDao {
     public Film save(Film film) {
         return ExecutorUtil.executeHibernate(this.entityManager, em -> {
             Director existingDirector = em.find(Director.class, film.getDirector().getId());
-
-            film.setDirector(existingDirector);  // Устанавливаем привязанный объект
-
+            film.setDirector(existingDirector);
             em.persist(film);
             return film;
         });
@@ -66,7 +64,7 @@ public class FilmDaoImpl implements FilmDao {
     @Override
     public Film update(Integer id, Film film) {
         return ExecutorUtil.executeHibernate(this.entityManager, em -> {
-            Film updatedFilm = this.entityManager.find(Film.class, id);
+            Film updatedFilm = em.find(Film.class, id);
             if (updatedFilm != null) {
                 updatedFilm = em.merge(film);
             }
@@ -76,7 +74,6 @@ public class FilmDaoImpl implements FilmDao {
 
     @Override
     public boolean delete(Integer id) {
-
         return Boolean.TRUE.equals(ExecutorUtil.executeHibernate(this.entityManager, em -> {
             Film film = em.find(Film.class, id);
             if (film != null) {

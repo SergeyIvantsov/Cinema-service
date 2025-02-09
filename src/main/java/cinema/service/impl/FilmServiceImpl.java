@@ -1,10 +1,8 @@
 package cinema.service.impl;
 
-import cinema.dao.DirectorDao;
 import cinema.dao.FilmDao;
 import cinema.dao.daoImpl.FilmDaoImpl;
 import cinema.dto.FilmDto;
-import cinema.entity.Director;
 import cinema.entity.Film;
 import cinema.service.DirectorService;
 import cinema.service.FilmService;

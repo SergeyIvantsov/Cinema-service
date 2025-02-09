@@ -23,7 +23,6 @@ public class EncodingFilter implements Filter {
         res.setCharacterEncoding("UTF-8");
         chain.doFilter(request, response);
 
-
     }
 
 

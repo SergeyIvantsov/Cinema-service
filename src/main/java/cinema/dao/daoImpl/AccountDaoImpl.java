@@ -2,6 +2,7 @@ package cinema.dao.daoImpl;
 
 import cinema.dao.AccountDao;
 import cinema.entity.Account;
+import cinema.entity.Film;
 import cinema.utils.ExecutorUtil;
 import cinema.utils.HibernateUtil;
 
@@ -35,14 +36,41 @@ public class AccountDaoImpl implements AccountDao {
                 em -> em.createQuery(query, Account.class).getResultList());
     }
 
+
+    @Override
+    public Account updateWithDiseredFilms(Integer accountId, Integer filmId) {
+        return ExecutorUtil.executeHibernate(this.entityManager, em -> {
+            Account updatedAccount = em.find(Account.class, accountId);
+            Film addedFilm = em.find(Film.class, filmId);
+            updatedAccount.getDesiredFilms().add(addedFilm);
+            if (updatedAccount != null) {
+                updatedAccount = em.merge(updatedAccount);
+            }
+            return updatedAccount;
+        });
+    }
+
+    @Override
+    public Account updateWithWatchedFilms(Integer accountId, Integer filmId) {
+        return ExecutorUtil.executeHibernate(this.entityManager, em -> {
+            Account updatedAccount = em.find(Account.class, accountId);
+            Film addedFilm = em.find(Film.class, filmId);
+            updatedAccount.getWatchedFilms().add(addedFilm);
+            if (updatedAccount != null) {
+                updatedAccount = em.merge(updatedAccount);
+            }
+            return updatedAccount;
+        });
+    }
+
+
     @Override
     public Account update(Integer id, Account account) {
         return ExecutorUtil.executeHibernate(this.entityManager, em -> {
-            Account updatedAccount = this.entityManager.find(Account.class, id);
+            Account updatedAccount = em.find(Account.class, id);
             if (updatedAccount != null) {
                 updatedAccount = em.merge(account);
             }
-
             return updatedAccount;
         });
     }

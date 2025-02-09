@@ -51,7 +51,7 @@ public class ActorDaoImpl implements ActorDao {
     @Override
     public Actor update(Integer id, Actor actor) {
         return ExecutorUtil.executeHibernate(this.entityManager, em -> {
-            Actor updatedActor = this.entityManager.find(Actor.class, id);
+            Actor updatedActor = em.find(Actor.class, id);
             if (updatedActor != null) {
                 updatedActor = em.merge(actor);
             }

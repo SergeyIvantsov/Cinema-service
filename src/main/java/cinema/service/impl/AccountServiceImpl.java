@@ -9,6 +9,7 @@ import cinema.service.AccountService;
 import cinema.service.FilmService;
 import cinema.utils.Constants;
 import cinema.utils.ConverterUtil;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -38,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountDto update(Integer id, AccountDto accountDto) {
+    public AccountDto updateAfterDeleteFilm (Integer id, AccountDto accountDto) {
         Account account = ConverterUtil.convertAccount(accountDto);
         account.setId(id);
         accountDto.setId(accountDao.update(id, account).getId());
@@ -46,35 +47,41 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public AccountDto update(Integer accountId, Integer filmId, boolean isDisered) {
+        Account accountUpdate;
+        if (isDisered){
+            accountUpdate = accountDao.updateWithDiseredFilms(accountId, filmId);
+        }else{
+           accountUpdate = accountDao.updateWithWatchedFilms(accountId, filmId);
+        }
+        AccountDto accountDto = ConverterUtil.convertAccount(accountUpdate);
+        return accountDto;
+    }
+
+
+    @Override
     public boolean delete(Integer id) {
         return accountDao.delete(id);
     }
 
     @Override
-    public void deleteFilmFromAccount(Integer idFilm) {
+    public void deleteDiseredFilmFromAccount(Integer idFilm) {
         AccountDto accountDto = get(Constants.ACCOUNT_ID);
         Set<FilmDto> desiredFilms = accountDto.getDesiredFilms();
         FilmDto filmDto = filmService.get(idFilm);
         desiredFilms.remove(filmDto);
-        update(Constants.ACCOUNT_ID, accountDto);
+        updateAfterDeleteFilm(Constants.ACCOUNT_ID, accountDto);
     }
-
 
 
     @Override
     public void addFilmToDesireList(Integer accountId, Integer filmId) {
-    AccountDto accountDto = get(accountId);
-    FilmDto filmDto = filmService.get(filmId);
-    accountDto.getDesiredFilms().add(filmDto);
-    update(accountId, accountDto);
+        update(accountId, filmId, true);
     }
 
     @Override
     public void addFilmToWatchedList(Integer accountId, Integer filmId) {
-        AccountDto accountDto = get(accountId);
-        FilmDto filmDto = filmService.get(filmId);
-        accountDto.getWatchedFilms().add(filmDto);
-        update(accountId, accountDto);
+        update(accountId, filmId, false);
     }
 
 
@@ -84,9 +91,17 @@ public class AccountServiceImpl implements AccountService {
         Set<FilmDto> watchedFilms = accountDto.getWatchedFilms();
         FilmDto filmDto = filmService.get(idFilm);
         watchedFilms.remove(filmDto);
-        update(Constants.ACCOUNT_ID, accountDto);
+        updateAfterDeleteWatchedFilm(Constants.ACCOUNT_ID, accountDto);
     }
 
+
+    @Override
+    public AccountDto updateAfterDeleteWatchedFilm (Integer id, AccountDto accountDto) {
+        Account account = ConverterUtil.convertAccount(accountDto);
+        account.setId(id);
+        accountDto.setId(accountDao.update(id, account).getId());
+        return accountDto;
+    }
 
 
     @Override

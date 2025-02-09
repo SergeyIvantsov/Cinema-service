@@ -6,15 +6,18 @@ import cinema.dto.FilmDto;
 import java.util.List;
 
 public interface AccountService {
-    AccountDto save(AccountDto t);
 
+    AccountDto save(AccountDto t);
 
     AccountDto get(Integer id);
 
-
     List<AccountDto> getAll();
 
-    AccountDto update(Integer id, AccountDto account);
+    AccountDto update(Integer accountId, Integer filmId, boolean is);
+
+    AccountDto updateAfterDeleteFilm (Integer accountId, AccountDto accountDto);
+
+    AccountDto updateAfterDeleteWatchedFilm (Integer accountId, AccountDto accountDto);
 
     void addFilmToDesireList(Integer accountId, Integer filmId);
 
@@ -22,7 +25,7 @@ public interface AccountService {
 
     boolean delete(Integer id);
 
-    void deleteFilmFromAccount(Integer idFilm);
+    void deleteDiseredFilmFromAccount(Integer idFilm);
 
     void deleteWatchedFilmFromAccount(Integer idWatchFilm);
 

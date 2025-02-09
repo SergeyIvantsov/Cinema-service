@@ -62,7 +62,7 @@
         <td><B>Film year</B></td>
         <td><B>Film genre</B></td>
         <td><B>Film director</B></td>
-        <td><B>Film actors</B></td>
+<%--        <td><B>Film actors</B></td>--%>
     </tr>
     <% List<FilmDto> films = (List<FilmDto>) request.getAttribute("films");
         for (FilmDto film : films) {

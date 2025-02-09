@@ -42,7 +42,7 @@ public class DirectorDaoImpl implements DirectorDao {
     @Override
     public Director update(Integer id, Director Director) {
         return ExecutorUtil.executeHibernate(this.entityManager, em -> {
-            Director updatedDirector = this.entityManager.find(Director.class, id);
+            Director updatedDirector = em.find(Director.class, id);
             if (updatedDirector != null) {
                 updatedDirector = em.merge(Director);
             }
